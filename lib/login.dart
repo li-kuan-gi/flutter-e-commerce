@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:shrine/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -37,25 +38,27 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
+                Text(
+                  'SHRINE',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
               ],
             ),
             const SizedBox(height: 120.0),
-            // TODO: Remove filled: true values (103)
             TextField(
-                decoration: const InputDecoration(
-                  filled: true,
-                  labelText: 'Username',
-                ),
-                controller: _usernameController),
+              decoration: const InputDecoration(
+                labelText: 'Username',
+              ),
+              controller: _usernameController,
+            ),
             const SizedBox(height: 12.0),
             TextField(
               decoration: const InputDecoration(
-                filled: true,
                 labelText: 'Password',
               ),
               controller: _passwordController,
             ),
+            const SizedBox(height: 16.0),
             OverflowBar(
               alignment: MainAxisAlignment.end,
               children: [
@@ -65,14 +68,27 @@ class _LoginPageState extends State<LoginPage> {
                     _usernameController.clear();
                     _passwordController.clear();
                   },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.secondary,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
+                  ),
                 ),
-                // TODO: Add an elevation to NEXT
                 // TODO: Add a beveled rectangular border to NEXT
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
                   child: const Text('NEXT'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: kShrineBrown900,
+                    backgroundColor: kShrinePink100,
+                    elevation: 8.0,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
+                  ),
                 ),
               ],
             )

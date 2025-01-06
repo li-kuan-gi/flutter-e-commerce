@@ -47,7 +47,6 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      // TODO: Add a grid view (102)
       body: GridView.count(
         crossAxisCount: 2,
         padding: const EdgeInsets.all(16.0),
@@ -71,10 +70,10 @@ class HomePage extends StatelessWidget {
 
     return products.map((product) {
       return Card(
+        elevation: 0.0,
         clipBehavior: Clip.antiAlias,
-        // TODO: Adjust card heights
         child: Column(
-          // TODO: Center items on the cards
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AspectRatio(
@@ -88,22 +87,22 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
               child: Column(
-                // TODO: Align labels to the bottom and center
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // TODO: Change inner-most Column
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // TODO: Handle overflowing labels
                   Text(
                     product.name,
-                    style: theme.textTheme.titleLarge,
+                    style: theme.textTheme.bodyLarge,
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                   const SizedBox(
-                    height: 8.0,
+                    height: 4.0,
                   ),
                   Text(
                     formatter.format(product.price),
-                    style: theme.textTheme.titleSmall,
+                    style: theme.textTheme.bodySmall,
                   ),
                 ],
               ),
